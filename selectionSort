@@ -1,0 +1,68 @@
+// Selection Sorting using Pointers
+
+#include <iostream>
+using namespace std;
+
+void selectionSort(int *,int);//get array from main and choose min value
+void swapValue(int *,int *);//get value from selectionSort and swap min with array index
+void displayValue(int *,int);//display sorted array
+
+int main()
+{
+    //getting input integers for sorting
+    int array[10]{};
+    int size{};
+    cout<<"Enter size of array: "<<endl;
+    cin>>size;
+    cout<<"Enter any "<<size<<" random integers: "<<endl;
+    for(int i{0};i<size;i++)
+    {
+        cin>>array[i];
+    }
+    cout<<"Array before sorting: "<<endl;
+    for(int i{0};i<size;i++)
+    {
+         cout<<array[i]<<"\t";;
+    }
+    //sorting
+    cout<<"Array after sorting: "<<endl;
+    selectionSort(array,size);
+    displayValue(array,size);
+    return 0;
+}
+
+void selectionSort(int *arr,int n)//*arr=pointer pointing to first index of array; n=size of array
+{
+    //int min{};
+    int *array_ptr{arr};//pointer 
+    for(int i{0};i<n;i++)
+    {
+        //min=i;
+        for(int j=i+1;j<n;j++)
+        {
+            if(array_ptr[j]<array_ptr[i])
+            {
+                //min=j;
+                swap(array_ptr[i],array_ptr[j]);//using swap function to swap values
+            }
+        }
+      //  swapValue(arr[i],arr[min]);//calling swapValue function to swap values
+    }
+}
+
+void displayValue(int *arr,int n)
+{
+    cout<<"Sorted Array: "<<endl;
+        for(int i=0;i<n;i++)
+        {
+            cout<<arr[i]<<"\t";
+        }
+}
+
+void swapValue(int &arr1,int &arr2)
+{
+    int temp{};
+    temp=arr1;
+    arr1=arr2;
+    arr2=temp;
+}
